@@ -9,8 +9,10 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v3
-      - name: Load & cahce dependencies
+      - name: Load & cache dependencies
         uses: ./.github/actions/cached-deps
+        with:
+          caching: 'false'
       - name: Lint code
         run: npm run lint
   test:
@@ -18,7 +20,7 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v3
-      - name: Load & cahce dependencies
+      - name: Load & cache dependencies
         uses: ./.github/actions/cached-deps 
       - name: Test code
         id: run-tests
@@ -35,7 +37,7 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v3
-      - name: Load & cahce dependencies
+      - name: Load & cache dependencies
         uses: ./.github/actions/cached-deps
       - name: Build website
         run: npm run build
